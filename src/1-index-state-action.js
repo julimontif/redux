@@ -1,19 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { configureStore } from "@reduxjs/toolkit"
-import { Provider } from "react-redux"
-import App, { reducer } from './App';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const store = configureStore({
-  reducer: reducer
+  reducer: {
+    state: (state = 0, action) => {
+      switch (action.type) {
+        case "accion":
+          return action.payload
+      }
+      return state
+    },
+  },
 })
+//SIEMPRE PROPIEDAD DE TYPE
+store.dispatch({type:"accion", payload: 2})
+store.dispatch({type:"accionindefinida", payload: 15})
+console.log(store.getState())
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <App />
   </React.StrictMode>
 );
 

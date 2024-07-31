@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const initialState = {
+  entities: [],
 }
 
-export default App;
+export const reducer = (state = initialState, action) => {
+  console.log(state)
+  return state
+}
+
+const App = () => {
+  return (
+    <div>
+      <form>
+        <input />
+      </form>
+      <button>Mostrat todos</button>
+      <button>Completados</button>
+      <button>Incompletos</button>
+      <ul>
+        <li>todo 1</li>
+        <li>todo 2</li>
+      </ul>
+    </div>
+  )
+}
+
+export default App
